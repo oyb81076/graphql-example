@@ -1,0 +1,27 @@
+{
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "extends": [
+    "airbnb-typescript/base",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {},
+  "overrides": [
+    {
+      "files": [
+        "**/scripts/**",
+        "**/__tests__/**"
+      ],
+      "rules": {
+        "import/no-extraneous-dependencies": 0,
+        "no-console": 0
+      }
+    }
+  ]
+}

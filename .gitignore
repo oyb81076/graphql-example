@@ -1,0 +1,10 @@
+.DS_Store
+node_modules
+bower_components
+build
+dist
+out
+target
+.gradle
+*.log
+*.sw?

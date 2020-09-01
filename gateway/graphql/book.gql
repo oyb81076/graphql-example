@@ -1,0 +1,38 @@
+scalar Date
+type Query {
+  findBook(id: ID!): Book
+  findBookList: [Book!]
+  findBookPage(
+    name: String
+    authorId: ID
+    size: Int!
+    index: Int!
+    total: Int = -1
+  ): BookPage!
+}
+type Mutation {
+  deleteBook(id: ID!): Book
+  createBook(input: BookCreator!): Book!
+  updateBook(id: ID!, input: BookUpdater!): Book!
+}
+type Book {
+  id: ID!
+  name: String!
+  author: Author
+  classify: BookClassify
+  created: Date!
+}
+type BookPage {
+  total: Int!
+  rows: [Book!]!
+}
+input BookCreator {
+  name: String!
+  authorId: ID!
+  classifyId: ID!
+}
+input BookUpdater {
+  name: String!
+  authorId: String!
+  classifyId: ID!
+}

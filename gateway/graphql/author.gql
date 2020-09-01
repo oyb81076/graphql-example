@@ -1,0 +1,41 @@
+scalar Date
+type Query {
+  findAuthor(id: ID!): Author
+  findAuthorList: [Author!]
+  findAuthorPage(input: AuthorPageQuery): AuthorPage!
+}
+type Mutation {
+  deleteAuthor(id: ID!): Author
+  createAuthor(input: AuthorCreator!): Author!
+  updateAuthor(id: ID!, input: AuthorUpdater!): Author!
+}
+enum AuthorType {
+  FREE
+  CONTRACT
+}
+type Author {
+  id: ID!
+  name: String!
+  type: AuthorType!
+  created: Date!
+}
+type AuthorPage {
+  total: Int!
+  rows: [Author!]!
+}
+input AuthorCreator {
+  name: String!
+  type: AuthorType!
+}
+input AuthorUpdater {
+  name: String!
+  type: AuthorType!
+}
+
+input AuthorPageQuery {
+  name: String
+  type: AuthorType
+  size: Int!
+  index: Int!
+  total: Int
+}

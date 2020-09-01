@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.idea.graphqls.api.mapper.BookClassifyMapper">
+    <resultMap id="book_classify" type="com.idea.graphqls.api.entity.BookClassify">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+    </resultMap>
+    <insert id="insert">
+        insert into book_classify(id, name) value (#{id}, #{name})
+    </insert>
+    <delete id="delete">
+        delete
+        from book_classify
+        where id = #{id}
+    </delete>
+    <update id="update">
+        update book_classify
+        set name = #{name}
+        where id = #{id}
+    </update>
+    <select id="get" resultMap="book_classify">
+        select id, name
+        from book_classify
+        where id = #{id}
+    </select>
+    <select id="list" resultMap="book_classify">
+        select id, name
+        from book_classify
+        order by id desc
+    </select>
+</mapper>

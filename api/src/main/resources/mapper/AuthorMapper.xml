@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.idea.graphqls.api.mapper.AuthorMapper">
+    <resultMap id="author" type="com.idea.graphqls.api.entity.Author">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="type" column="type"/>
+        <result property="created" column="created"/>
+    </resultMap>
+    <insert id="insert">
+        insert into author(id, name, type, created) value (#{id}, #{name}, #{type}, #{created})
+    </insert>
+    <delete id="delete">
+        delete
+        from author
+        where id = #{id}
+    </delete>
+    <update id="update">
+        update author
+        set name = #{name},
+            type = #{type}
+        where id = #{id}
+    </update>
+    <select id="get" resultMap="author">
+        select id, name, type, created
+        from author
+        where id = #{id}
+    </select>
+    <select id="list" resultType="Long">
+        select id
+        from author
+        order by id desc
+    </select>
+    <select id="count" resultType="int">
+        select count(*) from author
+        where true
+        <if test="name != null and name != ''">
+            and name like concat('%', #{name}, '%')
+        </if>
+        <if test="type != null">
+            and type = #{type}
+        </if>
+    </select>
+    <select id="page" resultType="Long">
+        select id from author where true
+        <if test="name != null and name != ''">
+            and name like concat('%', #{name}, '%')
+        </if>
+        <if test="type != null">
+            and type = #{type}
+        </if>
+        order by id desc
+        limit ${limit}
+    </select>
+</mapper>

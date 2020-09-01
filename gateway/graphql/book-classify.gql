@@ -1,0 +1,20 @@
+type Query {
+  findBookClassify(id: ID!): BookClassify
+  findBookClassifyList: [BookClassify!]!
+}
+type Mutation {
+  updateBookClassify(id: ID!, input: BookClassifyUpdater!): BookClassify!
+  createBookClassify(input: BookClassifyCreator!): BookClassify!
+  deleteBookClassify(id: ID!): BookClassify
+}
+
+type BookClassify {
+  id: ID!
+  name: String!
+}
+input BookClassifyCreator {
+  name: String!
+}
+input BookClassifyUpdater {
+  name: String!
+}

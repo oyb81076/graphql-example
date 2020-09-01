@@ -1,0 +1,30 @@
+{
+  "name": "gateway",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint --ext ts src",
+    "mock": "ts-node scripts/mock-server.ts",
+    "start": "ts-node src/index.ts"
+  },
+  "dependencies": {
+    "@types/mockjs": "^1.0.3",
+    "apollo-datasource-rest": "^0.9.3",
+    "apollo-server": "^2.17.0",
+    "graphql": "^15.3.0",
+    "log4js": "^6.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.5",
+    "@babel/preset-typescript": "^7.10.4",
+    "@typescript-eslint/eslint-plugin": "^4.0.1",
+    "@typescript-eslint/parser": "^4.0.1",
+    "eslint": "^7.8.0",
+    "eslint-config-airbnb-typescript": "^9.0.0",
+    "eslint-plugin-import": "^2.22.0",
+    "mockjs": "^1.1.0",
+    "node-snowflake.js": "^2.0.1",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2"
+  }
+}
