@@ -1,7 +1,10 @@
 scalar Date
 type Query {
+  # 获取书本
   findBook(id: ID!): Book
-  findBookList: [Book!]
+  # 获取书本列表
+  findBookList: [Book!]!
+  # 分页搜索
   findBookPage(
     name: String
     authorId: ID
@@ -11,21 +14,36 @@ type Query {
   ): BookPage!
 }
 type Mutation {
+  # 删除书本
   deleteBook(id: ID!): Book
+  # 创建书本
   createBook(input: BookCreator!): Book!
+  # 编辑书本
   updateBook(id: ID!, input: BookUpdater!): Book!
 }
+
+# 书本
 type Book {
+  # ID
   id: ID!
+  # 书名
   name: String!
+  # 作者
   author: Author
+  # 分类
   classify: BookClassify
+  # 创建日期
   created: Date!
 }
+
+# 书本分页
 type BookPage {
+  # 总页数
   total: Int!
+  # 行数
   rows: [Book!]!
 }
+
 input BookCreator {
   name: String!
   authorId: ID!
@@ -33,6 +51,6 @@ input BookCreator {
 }
 input BookUpdater {
   name: String!
-  authorId: String!
+  authorId: ID!
   classifyId: ID!
 }

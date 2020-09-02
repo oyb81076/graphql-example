@@ -1,37 +1,84 @@
 scalar Date
 type Query {
+  """
+  # 搜索作者
+  /api/author/:id
+  """
   findAuthor(id: ID!): Author
+  """
+  # 搜索作者列表
+  /api/author
+  """
   findAuthorList: [Author!]
+  """
+  # 搜索作者分页
+  /api/author?size={}&index={}&total={}
+  """
   findAuthorPage(input: AuthorPageQuery): AuthorPage!
 }
 type Mutation {
-  deleteAuthor(id: ID!): Author
+  """
+  添加作者
+  """
   createAuthor(input: AuthorCreator!): Author!
+  """
+  删除作者
+  """
+  deleteAuthor(id: ID!): Author
+  """
+  编辑作者
+  """
   updateAuthor(id: ID!, input: AuthorUpdater!): Author!
 }
+
+"""
+# 编辑作者
+Content
+* FREE     自由置业者
+* CONTRACT 签约作家
+"""
 enum AuthorType {
   FREE
   CONTRACT
 }
+
+"""
+作者Entity
+"""
 type Author {
   id: ID!
   name: String!
   type: AuthorType!
   created: Date!
 }
+
+"""
+作者Page
+"""
 type AuthorPage {
   total: Int!
   rows: [Author!]!
 }
+
+"""
+# 作者Creator
+"""
 input AuthorCreator {
   name: String!
   type: AuthorType!
 }
+
+"""
+# 作者Updater
+"""
 input AuthorUpdater {
   name: String!
   type: AuthorType!
 }
 
+"""
+# 作者PageQuery
+"""
 input AuthorPageQuery {
   name: String
   type: AuthorType

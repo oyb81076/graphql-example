@@ -1,20 +1,30 @@
 type Query {
+  # 获取书本分类
   findBookClassify(id: ID!): BookClassify
+  # 获取书本分类列表
   findBookClassifyList: [BookClassify!]!
 }
 type Mutation {
-  updateBookClassify(id: ID!, input: BookClassifyUpdater!): BookClassify!
+  # 添加书本分类
   createBookClassify(input: BookClassifyCreator!): BookClassify!
+  # 删除书本分类
   deleteBookClassify(id: ID!): BookClassify
+  # 修改书本分类
+  updateBookClassify(id: ID!, input: BookClassifyUpdater!): BookClassify!
 }
 
+# 书本分类 Entity
 type BookClassify {
   id: ID!
   name: String!
 }
+
+# 书本分类 Creator
 input BookClassifyCreator {
   name: String!
 }
+
+# 书本分类 Updater
 input BookClassifyUpdater {
   name: String!
 }
